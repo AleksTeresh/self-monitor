@@ -18,4 +18,14 @@ const keysToCamel = (o) => {
   return n;
 };
 
-export { keysToCamel }
+const valuesToNumber = (o) => {
+  const n = {};
+  Object.keys(o)
+    .forEach((k) => {
+      n[k] = Number(o[k]);
+    });
+
+  return n;
+};
+
+export { keysToCamel, valuesToNumber }

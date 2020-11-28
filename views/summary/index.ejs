@@ -1,0 +1,37 @@
+<h1>Weekly summary</h1>
+
+<form method="post">
+  <label>Week: </label>
+  <input type="week" name="week" value="<%= initialWeek %>" />
+  <input type="submit" value="Get summary" />
+</form>
+
+<% if (weekSummary) { %>
+  <label>Average sleep duration</label><%= weekSummary.avgSleepDuration.toFixed(2) %>
+  <label>Average time spent on sports and exercise</label><%= weekSummary.avgSportDuration.toFixed(2) %>
+  <label>Average time spent studying</label><%= weekSummary.avgStudyDuration.toFixed(2) %>
+  <label>Average sleep quality</label><%= weekSummary.avgSleepQuality.toFixed(2) %>
+  <label>Average generic mood</label><%= weekSummary.avgMood.toFixed(2) %>
+<% } else { %>
+  <p>No data exists for the given week</p>
+<% } %>
+
+<h1>Monthly summary</h1>
+
+<form method="post">
+  <label>Month: </label>
+  <input type="month" name="month" value="<%= initialMonth %>" />
+  <input type="submit" value="Get summary" />
+</form>
+
+<% if (monthSummary) { %>
+
+  <label>Average sleep duration</label><%= monthSummary.avgSleepDuration.toFixed(2) %>
+  <label>Average time spent on sports and exercise</label><%= monthSummary.avgSportDuration.toFixed(2) %>
+  <label>Average time spent studying</label><%= monthSummary.avgStudyDuration.toFixed(2) %>
+  <label>Average sleep quality</label><%= monthSummary.avgSleepQuality.toFixed(2) %>
+  <label>Average generic mood</label><%= monthSummary.avgMood.toFixed(2) %>
+
+<% } else { %>
+  <p>No data exists for the given month</p>
+<% } %>
