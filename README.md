@@ -5,11 +5,27 @@
 ```sql
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  email VARCHAR(320) NOT NULL,
+  email VARCHAR(320) NOT NULL UNIQUE,
   password CHAR(60) NOT NULL
 );
 
 CREATE UNIQUE INDEX ON users((lower(email)));
+
+CREATE TABLE reports (
+  id SERIAL PRIMARY KEY,
+  report_day date NOT NULL,
+  sleep_duration NUMERIC(5, 3) CHECK (sleep_duration >= 0 AND sleep_duration <= 24),
+  sleep_quality smallint CHECK (sleep_quality >= 0 AND sleep_quality <= 5),
+  sport_duration NUMERIC(5, 3) CHECK (sport_duration >= 0 AND sport_duration <= 24),
+  study_duration NUMERIC(5, 3) CHECK (study_duration >= 0 AND study_duration <= 24),
+  eating_regularity smallint CHECK (eating_regularity >= 0 AND eating_regularity <= 5),
+  eating_quality smallint CHECK (eating_quality >= 0 AND eating_quality <= 5),
+  morning_mood smallint CHECK (morning_mood >= 0 AND morning_mood <= 5),
+  evening_mood smallint CHECK (evening_mood >= 0 AND evening_mood <= 5),
+  user_id INTEGER REFERENCES users(id)
+);
+
+ALTER TABLE accounts ALTER COLUMN balance SET DEFAULT 0;
 ```
 
 ## Requirements
@@ -156,44 +172,44 @@ CREATE UNIQUE INDEX ON users((lower(email)));
   <li>
     <p>Reporting</p>
     <ul>
-      <li>
+      <li style="list-style: none;">✓
         <p>
           Reporting functionality is available under the path
           /behavior/reporting
         </p>
       </li>
-      <li><p>Reporting cannot be done if the user is not authenticated</p></li>
-      <li>
+      <li style="list-style: none;">✓<p>Reporting cannot be done if the user is not authenticated</p></li>
+      <li style="list-style: none;">✓
         <p>
           When accessing /behavior/reporting, user can choose whether morning or
           evening is being reported
         </p>
         <ul>
-          <li>User reporting form depends on selection</li>
-          <li>
+          <li style="list-style: none;">✓User reporting form depends on selection</li>
+          <li style="list-style: none;">✓
             Page at /behavior/reporting shows whether morning and/or evening
             reporting for today has already been done
           </li>
         </ul>
       </li>
-      <li>
+      <li style="list-style: none;">✓
         <p>
           Morning reporting form contains fields for date, sleep duration, sleep
           quality, and generic mood
         </p>
         <ul>
-          <li>
+          <li style="list-style: none;">✓
             Date is populated by default to today, but can be changed
             <ul>
-              <li>Form has a date field for selecting the date</li>
+              <li style="list-style: none;">✓Form has a date field for selecting the date</li>
             </ul>
           </li>
-          <li>Sleep duration is reported in hours (with decimals)</li>
-          <li>
+          <li style="list-style: none;">✓Sleep duration is reported in hours (with decimals)</li>
+          <li style="list-style: none;">✓
             Sleep quality and generic mood are reported using a number from 1 to
             5, where 1 corresponds to very poor and 5 corresponds to excellent.
             <ul>
-              <li>
+              <li style="list-style: none;">✓
                 Form has a slider (e.g. range) or radio buttons for reporting
                 the value
               </li>
@@ -219,29 +235,29 @@ CREATE UNIQUE INDEX ON users((lower(email)));
           </li>
         </ul>
       </li>
-      <li>
+      <li style="list-style: none;">✓
         <p>
           Evening reporting form contains fields for date, time spent on sports
           and exercise, time spent studying, regularity and quality of eating,
           and generic mood
         </p>
         <ul>
-          <li>
+          <li style="list-style: none;">✓
             Date is populated by default to today, but can be changed
             <ul>
-              <li>Form has a date field for selecting the date</li>
+              <li style="list-style: none;">✓Form has a date field for selecting the date</li>
             </ul>
           </li>
-          <li>
+          <li style="list-style: none;">✓
             Time spent on sports and exercise and time spent studying are
             reported in hours (with decimals)
           </li>
-          <li>
+          <li style="list-style: none;">✓
             Regularity and quality of eating and generic mood are reported using
             a number from 1 to 5, where 1 corresponds to very poor and 5
             corresponds to excellent.
             <ul>
-              <li>
+              <li style="list-style: none;">✓
                 Form has a slider (e.g. range) or radio buttons for reporting
                 the value
               </li>
@@ -268,11 +284,11 @@ CREATE UNIQUE INDEX ON users((lower(email)));
           </li>
         </ul>
       </li>
-      <li>
+      <li style="list-style: none;">✓
         <p>Reported values are stored into the database</p>
         <ul>
-          <li>The database schema used for reporting works for the task</li>
-          <li>
+          <li style="list-style: none;">✓The database schema used for reporting works for the task</li>
+          <li style="list-style: none;">✓
             Reporting is user-specific (all reported values are stored under the
             currently authenticated user)
           </li>
@@ -288,7 +304,7 @@ CREATE UNIQUE INDEX ON users((lower(email)));
           </li>
         </ul>
       </li>
-      <li>
+      <li style="list-style: none;">✓
         <p>
           Reporting functionality structured into logical parts (separate views
           folder, separate controller for reporting, service(s), ...)

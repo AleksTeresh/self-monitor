@@ -1,0 +1,20 @@
+<% if (didMorning) { %>
+  <p><b>Morning</b> report: already <b>done</b></p>
+<% } else { %>
+  <p><b>Morning</b> report: <b>not</b> yet done</p>
+<% } %>
+  
+<% if (didEvening) { %>
+  <p><b>Evening</b> report: already <b>done</b></p>
+<% } else { %>
+  <p><b>Evening</b> report: <b>not</b> yet done</p>
+<% } %>
+
+<form method="POST">
+  <input type="hidden" name="type" value="morning" />
+  <input type="submit" value="Morning report" />
+</form>
+<form method="POST">
+  <input type="hidden" name="type" value="evening" />
+  <input type="submit" value="Evening report" />
+</form>
