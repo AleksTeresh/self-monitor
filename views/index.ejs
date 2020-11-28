@@ -2,6 +2,14 @@
 
 <p>Report your behaviors and follow your trends</p>
 
+<% if (moodAverages.length >= 2) { %>
+  <label>Average mood today: </label><%= moodAverages[1].avgMood %>
+<% } %>
+
+<% if (moodAverages.length >= 1) { %>
+  <label>Average mood yesterday: </label><%= moodAverages[0].avgMood %>
+<% } %>
+
 <a href="/behavior/reporting">Report!</a>
 
 <a href="/auth/login">Login</a>
