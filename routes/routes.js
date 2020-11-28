@@ -13,6 +13,10 @@ import {
   postMorningReport,
   postEveningReport
 } from "./controllers/reportController.js";
+import {
+  showSummary,
+  postSummaryQuery
+} from "./controllers/summaryController.js";
 
 const router = new Router();
 
@@ -31,5 +35,8 @@ router.get("/behavior/reporting/morning", showReportMorningForm);
 router.post("/behavior/reporting/morning", postMorningReport);
 router.get("/behavior/reporting/evening", showReportEveningForm);
 router.post("/behavior/reporting/evening", postEveningReport);
+
+router.get("/behavior/summary", showSummary);
+router.post("/behavior/summary", postSummaryQuery);
 
 export { router };
