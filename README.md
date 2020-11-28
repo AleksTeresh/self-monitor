@@ -126,11 +126,11 @@ CREATE UNIQUE INDEX ON users((lower(email)));
           </li>
         </ul>
       </li>
-      <li>
+      <li style="list-style: none;">✓
         The application has middleware that controls access to the application
         <ul>
-          <li>Paths starting with /auth are accessible to all</li>
-          <li>
+          <li style="list-style: none;">✓Paths starting with /auth are accessible to all</li>
+          <li style="list-style: none;">✓
             Other paths require that the user is authenticated
             <ul>
               <li>
