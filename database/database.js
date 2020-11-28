@@ -1,7 +1,8 @@
 import { Client } from "../deps.js";
-import { config } from "../config/config.js";
+import { config } from "../configs/config.js";
 
 const getClient = () => {
+  console.log(config.database)
   return new Client(config.database);
 }
 
