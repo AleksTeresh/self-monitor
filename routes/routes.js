@@ -17,12 +17,11 @@ import {
   showSummary,
   postSummaryQuery
 } from "./controllers/summaryController.js";
+import { showLandingPage } from './controllers/landingController.js'
 
 const router = new Router();
 
-router.get("/", ({ response }) => {
-  response.redirect("/behavior/reporting");
-});
+router.get("/", showLandingPage);
 
 router.get("/auth/login", showLoginForm);
 router.get("/auth/registration", showRegisterForm);
