@@ -1,13 +1,15 @@
-import { dotenv } from '../deps.js'
+import { dotenvConfig } from "../deps.js";
+
+const envVars = dotenvConfig({ path: `./${Deno.args[0]}` });
 
 const config = {
   database: {
-    hostname: Deno.env.get('DB_HOSTNAME'),
-    database: Deno.env.get('DB_DATABASE'),
-    user: Deno.env.get('DB_USER'),
-    password: Deno.env.get('DB_PASSWORD'),
-    port: Number(Deno.env.get('DB_PORT'))
-  }
+    hostname: envVars["DB_HOSTNAME"],
+    database: envVars["DB_DATABASE"],
+    user: envVars["DB_USER"],
+    password: envVars["DB_PASSWORD"],
+    port: Number(envVars["DB_PORT"]),
+  },
 };
 
 export { config };

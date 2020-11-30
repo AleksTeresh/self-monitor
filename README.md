@@ -24,8 +24,6 @@ CREATE TABLE reports (
   evening_mood smallint CHECK (evening_mood >= 0 AND evening_mood <= 5),
   user_id INTEGER REFERENCES users(id)
 );
-
-ALTER TABLE accounts ALTER COLUMN balance SET DEFAULT 0;
 ```
 
 ## Requirements
@@ -315,7 +313,7 @@ ALTER TABLE accounts ALTER COLUMN balance SET DEFAULT 0;
   <li>
     <p>Summarization</p>
     <ul>
-      <li>
+      <li style="list-style: none;">✓
         Summary functionality is available under the path /behavior/summary
       </li>
       <li>
@@ -386,26 +384,26 @@ ALTER TABLE accounts ALTER COLUMN balance SET DEFAULT 0;
     <p>Landing page (i.e. page at the root path of the application)</p>
     <ul>
       <li>Landing page briefly describes the purpose of the application</li>
-      <li>
+      <li style="list-style: none;">✓
         Landing page shows a glimpse at the data and indicates a trend
         <ul>
-          <li>
+          <li style="list-style: none;">✓
             Landing page shows users' average mood for today and and yesterday
           </li>
-          <li>
+          <li style="list-style: none;">✓
             If the average mood yesterday was better than today, tells that
             things are looking gloomy today
           </li>
-          <li>
+          <li style="list-style: none;">✓
             If the average mood yesterday was was worse today, tells that things
             are looking bright today
           </li>
         </ul>
       </li>
-      <li>
+      <li style="list-style: none;">✓
         Landing page has links / buttons for login and register functionality
       </li>
-      <li>Landing page has links / buttons for reporting functionality</li>
+      <li style="list-style: none;">✓Landing page has links / buttons for reporting functionality</li>
     </ul>
   </li>
   <li>
@@ -529,18 +527,18 @@ ALTER TABLE accounts ALTER COLUMN balance SET DEFAULT 0;
   <li>
     <p>APIs</p>
     <ul>
-      <li>
+      <li style="list-style: none;">✓
         The application provides an API endpoint for retrieving summary data
         generated over all users in a JSON format
       </li>
-      <li>The API is accessible by all</li>
+      <li style="list-style: none;">✓The API is accessible by all</li>
       <li>The API allows cross-origin requests</li>
-      <li>
+      <li style="list-style: none;">✓
         Endpoint /api/summary/ provides a JSON document with averages for sleep
         duration, time spent on sports and exercise, time spent studying, sleep
         quality, and generic mood for each day over the last 7 days
       </li>
-      <li>
+      <li style="list-style: none;">✓
         Endpoint /api/summary/:year/:month/:day provides a JSON document with
         averages for sleep duration, time spent on sports and exercise, time
         spent studying, sleep quality, and generic mood for the given day

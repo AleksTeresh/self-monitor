@@ -3,4 +3,4 @@ export { viewEngine, engineFactory, adapterFactory } from "https://raw.githubuse
 export { Client } from "https://deno.land/x/postgres@v0.4.5/mod.ts";
 export { Session } from "https://deno.land/x/session@v1.0.0/mod.ts";
 export * as bcrypt from "https://deno.land/x/bcrypt@v0.2.4/mod.ts";
-export * as dotenv from "https://deno.land/x/dotenv@v1.0.1/load.ts";
+export { config as dotenvConfig } from "https://deno.land/x/dotenv@v1.0.1/mod.ts";
