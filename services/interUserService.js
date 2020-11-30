@@ -2,6 +2,22 @@ import { executeQuery } from "../database/database.js";
 import { keysToCamel, valuesToNumber } from "../utils/objectUtil.js";
 import { formatDate } from '../utils/dateUtil.js'
 
+const postprocess = (queryResult) => {
+  if (queryResult.rowCount === 0) {
+    return;
+  }
+
+  const objRes = queryResult.rowsOfObjects();
+  return objRes
+    .map(keysToCamel)
+    .map(valuesToNumber)
+    .map((o, i) => ({ ...o, reportDay: formatDate(objRes[i].report_day) }))
+    .reduce((acc, o) => ({
+      ...acc,
+      [o.reportDay]: o
+    }), {});
+}
+
 const getAverages = async (from, to) => {
   const res = await executeQuery(
     `SELECT
@@ -12,22 +28,14 @@ const getAverages = async (from, to) => {
     AVG(study_duration) as avg_study_duration,
     AVG(eating_regularity) as avg_eating_regularity,
     AVG(eating_quality) as avg_quality,
-    cast(SUM(morning_mood) + SUM(evening_mood) as decimal) / (COUNT(morning_mood) + COUNT(evening_mood)) as avg_mood
+    cast(COALESCE(SUM(morning_mood), 0) + COALESCE(SUM(evening_mood), 0) as decimal) / (COUNT(morning_mood) + COUNT(evening_mood)) as avg_mood
     FROM reports WHERE report_day >= $1 AND report_day <= $2
     GROUP BY report_day ORDER BY report_day ASC;`,
     from,
     to
   );
 
-  if (res.rowCount === 0) {
-    return;
-  }
-
-  const objRes = res.rowsOfObjects();
-  return objRes
-    .map(keysToCamel)
-    .map(valuesToNumber)
-    .map((o, i) => ({ ...o, reportDay: objRes[i].report_day }));
+  return postprocess(res)
 };
 
 const getMoodAverage = async (from, to) => {
@@ -35,22 +43,14 @@ const getMoodAverage = async (from, to) => {
   const res = await executeQuery(
     `SELECT
     report_day,
-    cast(SUM(morning_mood) + SUM(evening_mood) as decimal) / (COUNT(morning_mood) + COUNT(evening_mood)) as avg_mood
+    cast(COALESCE(SUM(morning_mood), 0) + COALESCE(SUM(evening_mood), 0) as decimal) / (COUNT(morning_mood) + COUNT(evening_mood)) as avg_mood
     FROM reports WHERE report_day >= $1 AND report_day <= $2
     GROUP BY report_day ORDER BY report_day ASC;`,
     from,
     to
   );
 
-  if (res.rowCount === 0) {
-    return;
-  }
-
-  const objRes = res.rowsOfObjects();
-  return objRes
-    .map(keysToCamel)
-    .map(valuesToNumber)
-    .map((o, i) => ({ ...o, reportDay: formatDate(objRes[i].report_day) }));
+  return postprocess(res)
 };
 
 export { getAverages, getMoodAverage };

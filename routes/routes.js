@@ -18,6 +18,7 @@ import {
   postSummaryQuery
 } from "./controllers/summaryController.js";
 import { showLandingPage } from './controllers/landingController.js'
+import { getAverages, getAveragesForDay } from './apis/interUserApi.js'
 
 const router = new Router();
 
@@ -37,5 +38,8 @@ router.post("/behavior/reporting/evening", postEveningReport);
 
 router.get("/behavior/summary", showSummary);
 router.post("/behavior/summary", postSummaryQuery);
+
+router.get("/api/summary", getAverages);
+router.get("/api/summary/:year/:month/:day", getAveragesForDay);
 
 export { router };

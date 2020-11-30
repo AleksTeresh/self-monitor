@@ -1,5 +1,5 @@
 const authMiddleware = async({request, response, session}, next) => {
-  if (request.url.pathname.startsWith('/auth') || request.url.pathname === '/') {
+  if (request.url.pathname.startsWith('/auth') || request.url.pathname.startsWith('/api/summary') || request.url.pathname === '/') {
     await next();
   } else {
     if (session && await session.get('authenticated')) {
