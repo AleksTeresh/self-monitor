@@ -2,12 +2,26 @@
 
 <p>Report your behaviors and follow your trends</p>
 
-<% if (moodAverages.length >= 2) { %>
-  <label>Average mood today: </label><%= moodAverages[1].avgMood %>
+<% if (moodAverages[todayString]) { %>
+  <p>Average mood today: <%= moodAverages[todayString].avgMood %></p>
+<% } else { %>
+  <p>No data on mood today yet</p>
 <% } %>
 
-<% if (moodAverages.length >= 1) { %>
-  <label>Average mood yesterday: </label><%= moodAverages[0].avgMood %>
+<% if (moodAverages[yesterdayString]) { %>
+  <p>Average mood yesterday: <%= moodAverages[yesterdayString].avgMood %></p>
+<% } else { %>
+  <p>No data on mood from yesterday</p>
+<% } %>
+
+<% if (showTrend) { %>
+  <% if (moodTrend > 0) { %>
+    <p>Things are looking bright today</p>
+  <% } else if (moodTrend < 0) { %>
+    <p>Things are looking gloomy today</p>
+  <% } else { %>
+    <p>Average mood is the same as yesterday</p>
+  <% } %>
 <% } %>
 
 <a href="/behavior/reporting">Report!</a>

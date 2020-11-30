@@ -1,5 +1,6 @@
 import { executeQuery } from "../database/database.js";
 import { keysToCamel, valuesToNumber } from "../utils/objectUtil.js";
+import { formatDate } from '../utils/dateUtil.js'
 
 const getAverages = async (from, to) => {
   const res = await executeQuery(
@@ -49,7 +50,7 @@ const getMoodAverage = async (from, to) => {
   return objRes
     .map(keysToCamel)
     .map(valuesToNumber)
-    .map((o, i) => ({ ...o, reportDay: objRes[i].report_day }));
+    .map((o, i) => ({ ...o, reportDay: formatDate(objRes[i].report_day) }));
 };
 
 export { getAverages, getMoodAverage };

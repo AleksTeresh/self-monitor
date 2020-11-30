@@ -2,7 +2,6 @@ import {
   getWeekSummary,
   getMonthSummary,
 } from "../../services/summaryService.js";
-import { getDateRangeOfWeek, getMonthRange } from "../../utils/dateUtil.js";
 
 const showSummary = async ({ render, request, response, session }) => {
   const params = request.url.searchParams;
