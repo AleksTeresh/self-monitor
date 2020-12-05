@@ -27,7 +27,7 @@ router.get("/", showLandingPage);
 router.get("/auth/login", showLoginForm);
 router.get("/auth/registration", showRegisterForm);
 router.post("/auth/login", authenticate);
-router.post("/auth/register", register);
+router.post("/auth/registration", register);
 
 router.get("/behavior/reporting", showReportForm);
 router.post("/behavior/reporting", chooseReportType);

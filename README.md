@@ -71,13 +71,13 @@ CREATE TABLE reports (
           <li style="list-style: none;">✓
             Registration uses labels to clarify the purpose of the input fields
           </li>
-          <li>
+          <li style="list-style: none;">✓
             Registration form is validated on the server
             <ul>
-              <li>Email must be an authentic email</li>
-              <li>Password must contain at least 4 characters</li>
-              <li>Validation errors shown on page</li>
-              <li>
+              <li style="list-style: none;">✓Email must be an authentic email</li>
+              <li style="list-style: none;">✓Password must contain at least 4 characters</li>
+              <li style="list-style: none;">✓Validation errors shown on page</li>
+              <li style="list-style: none;">✓
                 In case of validation errors, email field is populated (password
                 is not)
               </li>

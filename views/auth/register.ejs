@@ -1,8 +1,17 @@
 <%- include('../partials/header.ejs') %>
 <h1>Register!</h1>
-<form method="POST" action="/auth/register">
+<% if (errors) { %>
+    <ul>
+        <% Object.keys(errors).forEach((attribute) => { %>
+            <% Object.values(errors[attribute]).forEach((err) => { %>
+                <li><%= err %></li>
+            <% }); %>
+        <% }); %>
+    </ul>
+    <% } %>
+<form method="POST" action="/auth/registration">
     <label>Email</label>
-    <input type="email" name="email" /><br />
+    <input type="email" name="email" value="<%= email %>" /><br />
     <label>Password</label>
     <input type="password" name="password" /><br />
     <label>Same password again</label>
