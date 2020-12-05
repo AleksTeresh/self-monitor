@@ -2,7 +2,7 @@ import { Application, Session } from "./deps.js";
 import { router } from "./routes/routes.js";
 import * as middleware from './middlewares/middlewares.js';
 import { config } from './configs/config.js'
-import { viewEngine, engineFactory, adapterFactory } from "./deps.js";
+import { viewEngine, engineFactory, adapterFactory, oakCors } from "./deps.js";
 
 const app = new Application();
 
@@ -16,6 +16,8 @@ const oakAdapter = adapterFactory.getOakAdapter();
 app.use(viewEngine(oakAdapter, ejsEngine, {
     viewRoot: "./views"
 }));
+
+app.use(oakCors())
 
 app.use(middleware.errorMiddleware);
 app.use(middleware.requestTimingMiddleware);

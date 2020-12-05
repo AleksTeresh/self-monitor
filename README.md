@@ -310,74 +310,74 @@ CREATE TABLE reports (
       </li>
     </ul>
   </li>
-  <li>
+  <li style="list-style: none;">✓
     <p>Summarization</p>
     <ul>
       <li style="list-style: none;">✓
         Summary functionality is available under the path /behavior/summary
       </li>
-      <li>
+      <li style="list-style: none;">✓
         Main summary page contains the following statistics, by default shown
         for the last week and month
         <ul>
-          <li>
+          <li style="list-style: none;">✓
             Weekly average (by default from last week)
             <ul>
-              <li>Average sleep duration</li>
-              <li>Average time spent on sports and exercise</li>
-              <li>Average time spent studying</li>
-              <li>Average sleep quality</li>
-              <li>Average generic mood</li>
+              <li style="list-style: none;">✓Average sleep duration</li>
+              <li style="list-style: none;">✓Average time spent on sports and exercise</li>
+              <li style="list-style: none;">✓Average time spent studying</li>
+              <li style="list-style: none;">✓Average sleep quality</li>
+              <li style="list-style: none;">✓Average generic mood</li>
             </ul>
           </li>
-          <li>
+          <li style="list-style: none;">✓
             Monthly average (by default from last month)
             <ul>
-              <li>Average sleep duration</li>
-              <li>Average time spent on sports and exercise</li>
-              <li>Average time spent studying</li>
-              <li>Average sleep quality</li>
-              <li>Average generic mood</li>
+              <li style="list-style: none;">✓Average sleep duration</li>
+              <li style="list-style: none;">✓Average time spent on sports and exercise</li>
+              <li style="list-style: none;">✓verage time spent studying</li>
+              <li style="list-style: none;">✓Average sleep quality</li>
+              <li style="list-style: none;">✓Average generic mood</li>
             </ul>
           </li>
         </ul>
       </li>
-      <li>
+      <li style="list-style: none;">✓
         Summary page has a selector for week and month. Check input type="week"
         and input type="month".
         <ul>
-          <li>
+          <li style="list-style: none;">✓
             When the week is changed, the weekly average will be shown for the
             given week.
           </li>
-          <li>
+          <li style="list-style: none;">✓
             When the month is changed, the monthly average will be shown for the
             given month.
           </li>
-          <li>
+          <li style="list-style: none;">✓
             If no data for the given week exists, the weekly summary shows text
             suggesting that no data for the given week exists.
           </li>
-          <li>
+          <li style="list-style: none;">✓
             If no data for the given month exists, the monthly summary shows
             text suggesting that no data for the given month exists.
           </li>
         </ul>
       </li>
-      <li>
+      <li style="list-style: none;">✓
         Summary data / averages calculated within the database
         <ul>
-          <li>
+          <li style="list-style: none;">✓
             When doing weekly reporting, the weekly averages are calculated in
             the database
           </li>
-          <li>
+          <li style="list-style: none;">✓
             When doing monthly reporting, the monthly averages are calculated in
             the database
           </li>
         </ul>
       </li>
-      <li>Summarization page contains statistics only for the current user.</li>
+      <li style="list-style: none;">✓Summarization page contains statistics only for the current user.</li>
     </ul>
   </li>
   <li>
@@ -457,7 +457,7 @@ CREATE TABLE reports (
   <li>
     <p>Database</p>
     <ul>
-      <li>
+      <li style="list-style: none;">✓
         Expensive calculations such as calculating averages are done in the
         database
       </li>
@@ -465,16 +465,16 @@ CREATE TABLE reports (
         Indices are used when joining tables if the queries are such that they
         are used often
       </li>
-      <li>Database uses a connection pool</li>
+      <li style="list-style: none;">✓Database uses a connection pool</li>
       <li style="list-style: none;">✓Database credentials are not included in the code</li>
     </ul>
   </li>
   <li>
     <p>User interface / views</p>
     <ul>
-      <li>Views are stored in a separate folder</li>
-      <li>User interface uses partials for header content</li>
-      <li>User interface uses partials for footer content</li>
+      <li style="list-style: none;">✓Views are stored in a separate folder</li>
+      <li style="list-style: none;">✓User interface uses partials for header content</li>
+      <li style="list-style: none;">✓User interface uses partials for footer content</li>
       <li>
         Recurring parts are separated into own partials (e.g. partial for
         validation errors)
@@ -496,7 +496,7 @@ CREATE TABLE reports (
           </li>
         </ul>
       </li>
-      <li>
+      <li style="list-style: none;">✓
         User interface uses a style library or self-made stylesheets (see e.g.
         <a
           href="https://getbootstrap.com/"
@@ -506,13 +506,13 @@ CREATE TABLE reports (
         >
         for a style library)
         <ul>
-          <li>
+          <li style="list-style: none;">✓
             If Twitter Bootstrap or other external style libraries are used,
             they are used over a content delivery network
           </li>
         </ul>
       </li>
-      <li>Different pages of the application follow the same style</li>
+      <li style="list-style: none;">✓Different pages of the application follow the same style</li>
       <li>
         User sees if the user has logged in (e.g. with a message 'Logged in as
         <a
@@ -532,7 +532,7 @@ CREATE TABLE reports (
         generated over all users in a JSON format
       </li>
       <li style="list-style: none;">✓The API is accessible by all</li>
-      <li>The API allows cross-origin requests</li>
+      <li style="list-style: none;">✓The API allows cross-origin requests</li>
       <li style="list-style: none;">✓
         Endpoint /api/summary/ provides a JSON document with averages for sleep
         duration, time spent on sports and exercise, time spent studying, sleep
@@ -575,4 +575,5 @@ CREATE TABLE reports (
       <li>Documentation contains guidelines for running tests</li>
     </ul>
   </li>
+  <li>Resolve time zone business</li>
 </ul>

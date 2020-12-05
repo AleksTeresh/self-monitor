@@ -1,3 +1,4 @@
+<%- include('../partials/header.ejs') %>
 <h1>Morning report</h1>
 
 <form method="POST">
@@ -11,3 +12,4 @@
   <input type="date" name="date" value="<%= (new Date()).toISOString().substr(0, 10) %>" />
   <input type="submit" value="Submit" />
 </form>
+<%- include('../partials/footer.ejs') %>

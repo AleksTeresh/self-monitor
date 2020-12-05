@@ -39,7 +39,6 @@ const getAverages = async (from, to) => {
 };
 
 const getMoodAverage = async (from, to) => {
-  console.log(from, to);
   const res = await executeQuery(
     `SELECT
     report_day,

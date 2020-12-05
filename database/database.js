@@ -1,20 +1,20 @@
-import { Client } from "../deps.js";
+import { Pool } from "../deps.js";
 import { config } from "../configs/config.js";
 
-const getClient = () => {
-  return new Client(config.database);
-}
+const CONCURRENT_CONNECTIONS = 5;
+const connectionPool = new Pool(config.database, CONCURRENT_CONNECTIONS);
 
 const executeQuery = async(query, ...args) => {
-  const client = getClient();
+  const client = await connectionPool.connect();
   try {
-    await client.connect();
     return await client.query(query, ...args);
   } catch (e) {
     console.log(e);
   } finally {
-    await client.end();
+    client.release();
   }
+
+  return null;
 }
 
 export { executeQuery };

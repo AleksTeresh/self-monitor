@@ -1,14 +1,15 @@
+<%- include('./partials/header.ejs') %>
 <h1>Self Monitor!</h1>
 
 <p>Report your behaviors and follow your trends</p>
 
-<% if (moodAverages[todayString]) { %>
+<% if (moodAverages && moodAverages[todayString]) { %>
   <p>Average mood today: <%= moodAverages[todayString].avgMood %></p>
 <% } else { %>
   <p>No data on mood today yet</p>
 <% } %>
 
-<% if (moodAverages[yesterdayString]) { %>
+<% if (moodAverages && moodAverages[yesterdayString]) { %>
   <p>Average mood yesterday: <%= moodAverages[yesterdayString].avgMood %></p>
 <% } else { %>
   <p>No data on mood from yesterday</p>
@@ -24,7 +25,13 @@
   <% } %>
 <% } %>
 
-<a href="/behavior/reporting">Report!</a>
+<p>
+  <a href="/behavior/reporting">Report!</a>
+  <a href="/behavior/summary">View summary!</a>
+</p>
 
-<a href="/auth/login">Login</a>
-<a href="/auth/registration">Register</a>
+<p>
+  <a href="/auth/login">Login</a>
+  <a href="/auth/registration">Register</a>
+</p>
+<%- include('./partials/footer.ejs') %>

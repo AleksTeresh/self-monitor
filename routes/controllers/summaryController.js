@@ -2,17 +2,32 @@ import {
   getWeekSummary,
   getMonthSummary,
 } from "../../services/summaryService.js";
+import { getWeek } from "../../utils/dateUtil.js";
 
 const showSummary = async ({ render, request, response, session }) => {
   const params = request.url.searchParams;
 
   const user = await session.get("user");
 
-  const week = params.get("week").split("-")[1].slice(1);
-  const weekYear = params.get("week").split("-")[0];
+  const weekParam = params.get("week");
+  const monthParam = params.get("month");
 
-  const month = params.get("month").split("-")[1];
-  const monthYear = params.get("month").split("-")[0];
+  if (!weekParam || !monthParam) {
+    const today = new Date();
+    const thisWeek = getWeek(today);
+    const thisMonth = today.getMonth() + 1;
+    const thisYear = today.getFullYear();
+    response.redirect(
+      `/behavior/summary?week=${thisYear}-W${thisWeek}&month=${thisYear}-${thisMonth}`
+    );
+    return
+  }
+
+  const week = weekParam.split("-")[1].slice(1);
+  const weekYear = weekParam.split("-")[0];
+
+  const month = monthParam.split("-")[1];
+  const monthYear = monthParam.split("-")[0];
 
   const weekSummary = await getWeekSummary(user.id, week, weekYear);
   const monthSummary = await getMonthSummary(
@@ -23,8 +38,8 @@ const showSummary = async ({ render, request, response, session }) => {
   render("summary/index.ejs", {
     weekSummary,
     monthSummary,
-    initialWeek: params.get("week"),
-    initialMonth: params.get("month"),
+    initialWeek: weekParam,
+    initialMonth: monthParam,
   });
 };
 

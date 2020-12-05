@@ -1,3 +1,4 @@
+<%- include('../partials/header.ejs') %>
 <h1>Login!</h1>
 <form method="POST" action="/auth/login">
     <label>Email</label>
@@ -6,3 +7,4 @@
     <input type="password" name="password" /><br />
     <input type="submit" value="Login!" />
 </form>
+<%- include('../partials/footer.ejs') %>
