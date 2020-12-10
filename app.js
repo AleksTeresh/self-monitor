@@ -26,6 +26,6 @@ app.use(middleware.serveStaticFilesMiddleware);
 
 app.use(router.routes());
 
-app.listen({ port: 7777 });
+app.listen({ port: config.port });
   
 export default app;

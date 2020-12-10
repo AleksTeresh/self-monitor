@@ -2,6 +2,8 @@
 
 ## Setting up database
 
+
+
 ```sql
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
@@ -24,6 +26,18 @@ CREATE TABLE reports (
   evening_mood smallint CHECK (evening_mood >= 0 AND evening_mood <= 5),
   user_id INTEGER REFERENCES users(id)
 );
+```
+
+## Running the app
+
+```
+PGPORT=5432 PGDATABASE=postgres PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecretpassword deno run --allow-all --unstable ./app.js
+```
+
+## Running tests
+
+```
+PGPORT=5432 PGDATABASE=postgres PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecretpassword deno test --allow-all --unstable
 ```
 
 ## Requirements

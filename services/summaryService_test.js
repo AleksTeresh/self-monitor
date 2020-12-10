@@ -8,7 +8,6 @@ Deno.test({
     const response = await testClient.get("/")
     // assertEquals("Hello", "Hello")
     assertEquals(response.statusCode, 200)
-    Deno.exit(0)
   },
   sanitizeResources: false,
   sanitizeOps: false
