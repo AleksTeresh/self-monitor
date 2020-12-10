@@ -450,25 +450,25 @@ PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecret
       <li style="list-style: none;">✓Landing page has links / buttons for reporting functionality</li>
     </ul>
   </li>
-  <li>
+  <li style="list-style: none;">✓
     <p>Testing</p>
     <ul>
-      <li>
+      <li style="list-style: none;">✓
         The application has at least 5 meaningful automated tests. All tests
         detect if e.g. tested functionality is changed so that it no longer
         works as expected.
       </li>
-      <li>
+      <li style="list-style: none;">✓
         The application has at least 10 meaningful automated tests. All tests
         detect if e.g. tested functionality is changed so that it no longer
         works as expected.
       </li>
-      <li>
+      <li style="list-style: none;">✓
         The application has at least 20 meaningful automated tests. All tests
         detect if e.g. tested functionality is changed so that it no longer
         works as expected.
       </li>
-      <li>
+      <li style="list-style: none;">✓
         The application has at least 30 meaningful automated tests. All tests
         detect if e.g. tested functionality is changed so that it no longer
         works as expected.
