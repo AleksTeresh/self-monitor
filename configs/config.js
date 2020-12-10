@@ -1,15 +1,9 @@
-import { dotenvConfig } from "../deps.js";
+let config = {};
 
-const envVars = dotenvConfig({ path: `./${Deno.args[0] || 'dev.env'}` });
+if (Deno.env.get('DATABASE_URL')) {
+  config.database = Deno.env.get('DATABASE_URL');
+} else {
+  config.database = {};
+}
 
-const config = {
-  database: {
-    hostname: envVars["DB_HOSTNAME"],
-    database: envVars["DB_DATABASE"],
-    user: envVars["DB_USER"],
-    password: envVars["DB_PASSWORD"],
-    port: Number(envVars["DB_PORT"]),
-  },
-};
-console.log(config)
-export { config };
+export { config }; 

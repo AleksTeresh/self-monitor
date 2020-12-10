@@ -3,6 +3,5 @@ export { viewEngine, engineFactory, adapterFactory } from "https://raw.githubuse
 export { Pool } from "https://deno.land/x/postgres@v0.4.5/mod.ts";
 export { Session } from "https://deno.land/x/session@v1.0.0/mod.ts";
 export * as bcrypt from "https://deno.land/x/bcrypt@v0.2.4/mod.ts";
-export { config as dotenvConfig } from "https://deno.land/x/dotenv@v1.0.1/mod.ts";
 export { oakCors } from "https://deno.land/x/cors@v1.2.1/mod.ts";
 export { validate, required, lengthBetween, isEmail, minLength } from "https://deno.land/x/validasaur@v0.15.0/mod.ts";
