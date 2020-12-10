@@ -1,3 +1,4 @@
+// adapted from https://weeknumber.net/how-to/javascript
 export function getWeek(originalDate) {
     var date = new Date(originalDate.getTime());
     date.setHours(0, 0, 0, 0);

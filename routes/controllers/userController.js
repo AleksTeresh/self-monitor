@@ -8,7 +8,7 @@ const getRegisterData = () => ({
 })
 
 const showRegisterForm = async({render}) => {
-render('auth/register.ejs', getRegisterData())
+  render('auth/register.ejs', getRegisterData())
 }
 
 const validationRules = {
@@ -30,7 +30,6 @@ const register = async({request, response, session, render}) => {
   if (!passes) {
     data.errors = errors;
     data.password = '';
-    console.log(errors, passes)
     render("auth/register.ejs", data);
     return
   }

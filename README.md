@@ -28,6 +28,36 @@ CREATE TABLE reports (
 );
 ```
 
+```sql
+CREATE DATABASE test;
+
+\c test;
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(320) NOT NULL UNIQUE,
+  password CHAR(60) NOT NULL
+);
+
+CREATE UNIQUE INDEX ON users((lower(email)));
+
+CREATE TABLE reports (
+  id SERIAL PRIMARY KEY,
+  report_day date NOT NULL,
+  sleep_duration NUMERIC(5, 3) CHECK (sleep_duration >= 0 AND sleep_duration <= 24),
+  sleep_quality smallint CHECK (sleep_quality >= 0 AND sleep_quality <= 5),
+  sport_duration NUMERIC(5, 3) CHECK (sport_duration >= 0 AND sport_duration <= 24),
+  study_duration NUMERIC(5, 3) CHECK (study_duration >= 0 AND study_duration <= 24),
+  eating_regularity smallint CHECK (eating_regularity >= 0 AND eating_regularity <= 5),
+  eating_quality smallint CHECK (eating_quality >= 0 AND eating_quality <= 5),
+  morning_mood smallint CHECK (morning_mood >= 0 AND morning_mood <= 5),
+  evening_mood smallint CHECK (evening_mood >= 0 AND evening_mood <= 5),
+  user_id INTEGER REFERENCES users(id)
+);
+
+INSERT INTO users (email, password) VALUES ('test@test.test', '$2a$10$JBoghQCCRf9exbhCQspanehOPbwDwTx7MCI8.lKln2NClIJ7j.60m');
+```
+
 ## Running the app
 
 ```
@@ -37,7 +67,7 @@ PGPORT=5432 PGDATABASE=postgres PGUSER=postgres PGHOST=localhost PGPASSWORD=myse
 ## Running tests
 
 ```
-PGPORT=5432 PGDATABASE=postgres PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecretpassword deno test --allow-all --unstable
+PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecretpassword deno test --coverage --allow-all --unstable
 ```
 
 ## Requirements
