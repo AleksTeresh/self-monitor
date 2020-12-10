@@ -2,6 +2,7 @@ import { register as createUser, getUser } from '../../services/userService.js'
 import { validate, required, lengthBetween, isEmail, minLength } from '../../deps.js'
 
 const getRegisterData = () => ({
+  verification: '',
   passoword: '',
   email: '',
   errors: []
@@ -33,12 +34,16 @@ const register = async({request, response, session, render}) => {
   if (!passes) {
     data.errors = errors;
     data.password = '';
+    data.verification = '';
     render("auth/register.ejs", data);
     return
   }
 
   if (password !== verification) {
-    response.body = 'The entered passwords did not match';
+    data.errors = { verification: ['The entered passwords did not match'] };
+    data.password = '';
+    data.verification = '';
+    render("auth/register.ejs", data);
     return;
   }
 
@@ -47,13 +52,16 @@ const register = async({request, response, session, render}) => {
   // already exists
   const existingUsers = await getUser(email)
   if (existingUsers) {
-    response.body = 'The email is already reserved.';
+    data.errors = { email: ['The email is already reserved.'] };
+    data.password = '';
+    data.verification = '';
+    render("auth/register.ejs", data);
     return;
   }
 
   // otherwise, store the details in the database
   await createUser(email, password)
-  response.body = 'Registration successful!';
+  response.redirect('/');
 };
 
 export { register, showRegisterForm }

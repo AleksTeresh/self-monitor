@@ -5,9 +5,10 @@ Deno.test({
   name: "Trying to register with existing email returns relevant failure message", 
   async fn() {
     const testClient = await superoak(app);
-    await testClient.post("/auth/registration")
+    const response = await testClient.post("/auth/registration")
       .send('email=test@test.test&password=tester123&verification=tester123')
-      .expect('The email is already reserved.');
+
+    assertStringIncludes(response.xhr.response, "The email is already reserved.")
   },
   sanitizeResources: false,
   sanitizeOps: false
@@ -17,9 +18,10 @@ Deno.test({
   name: "Trying to register with password verification that does not match password returns relevant failure message", 
   async fn() {
     const testClient = await superoak(app);
-    await testClient.post("/auth/registration")
+    const response = await testClient.post("/auth/registration")
       .send('email=test@test.test&password=tester123&verification=tester1234')
-      .expect('The entered passwords did not match');
+
+    assertStringIncludes(response.xhr.response, 'The entered passwords did not match')
   },
   sanitizeResources: false,
   sanitizeOps: false

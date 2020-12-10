@@ -23,7 +23,7 @@ const authenticate = async({request, response, session, render}) => {
 
   await session.set('authenticated', true);
   await session.set('user', userData);
-  response.body = 'Authentication successful!';
+  response.redirect('/');
 }
 
 const logout = async({ session, response }) => {

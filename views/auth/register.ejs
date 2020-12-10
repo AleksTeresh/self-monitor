@@ -8,6 +8,7 @@
     <%- include('../partials/error.ejs', { errors: errors, attribute: 'password'}) %>
     <input type="password" name="password" /><br />
     <label>Same password again</label>
+    <%- include('../partials/error.ejs', { errors: errors, attribute: 'verification'}) %>
     <input type="password" name="verification" /><br />
     <input type="submit" value="Submit!" />
 </form>

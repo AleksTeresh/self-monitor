@@ -108,7 +108,7 @@ const postMorningReport = async ({ render, request, response, session }) => {
 
   await doReport(user.id, date, { sleepDuration, sleepQuality, morningMood });
 
-  response.body = "Thank you for reporting!";
+  response.redirect('/behavior/reporting/morning');
 };
 
 const eveningValidationRules = {
@@ -162,7 +162,7 @@ const postEveningReport = async ({ render, request, response, session }) => {
     eveningMood,
   });
 
-  response.body = "Thank you for reporting!";
+  response.redirect('/behavior/reporting/evening');
 };
 
 export {
