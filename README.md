@@ -85,7 +85,7 @@ CREATE TABLE reports (
           </li>
         </ul>
       </li>
-      <li>
+      <li style="list-style: none;">✓
         User-specific functionality is structured into logical parts (e.g.
         userController.js, userService.js)
       </li>
@@ -100,12 +100,12 @@ CREATE TABLE reports (
         <ul>
           <li style="list-style: none;">✓Login form asks for email and password</li>
           <li style="list-style: none;">✓Login uses labels to clarify the purpose of the input fields</li>
-          <li>Login form has a link to the registration form</li>
-          <li>
+          <li style="list-style: none;">✓Login form has a link to the registration form</li>
+          <li style="list-style: none;">✓
             If the user types in an invalid email or password, a message
             "Invalid email or password" is shown on the login page.
             <ul>
-              <li>Form fields are not populated</li>
+              <li style="list-style: none;">✓Form fields are not populated</li>
             </ul>
           </li>
         </ul>
@@ -213,7 +213,7 @@ CREATE TABLE reports (
               </li>
             </ul>
           </li>
-          <li>
+          <li style="list-style: none;">✓
             Form contains labels that clarify the purpose of the input fields
             and the accepted values
           </li>

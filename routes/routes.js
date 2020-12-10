@@ -1,10 +1,12 @@
 import { Router } from "../deps.js";
 import {
   authenticate,
-  register,
   showLoginForm,
-  showRegisterForm,
 } from "./controllers/authController.js";
+import {
+  register,
+  showRegisterForm,
+} from "./controllers/userController.js";
 import {
   showReportForm,
   showReportMorningForm,

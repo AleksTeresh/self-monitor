@@ -1,6 +1,6 @@
 import { bcrypt } from '../deps.js'
 import { executeQuery } from '../database/database.js'
-import { getUser, addUser } from './userService.js'
+import { getUser } from './userService.js'
 
 const authenticate = async(email, password) => {
   // check if the email exists in the database
@@ -21,12 +21,4 @@ const authenticate = async(email, password) => {
   }
 }
 
-const register = async(email, password) => {
-  console.log(password)
-  // otherwise, store the details in the database
-  const hash = await bcrypt.hash(password);
-  // when storing a password, store the hash    
-  addUser(email, hash)
-}
-
-export { authenticate, register, getUser }
+export { authenticate }

@@ -1,5 +1,5 @@
 import { executeQuery } from '../database/database.js'
-import { getUser, addUser } from './userService.js'
+import { getUser } from './userService.js'
 import { keysToCamel } from '../utils/objectUtil.js'
 
 const doReport = async(userId, date, reportData) => {
