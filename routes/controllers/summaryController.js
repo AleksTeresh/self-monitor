@@ -40,6 +40,7 @@ const showSummary = async ({ render, request, response, session }) => {
     monthSummary,
     initialWeek: weekParam,
     initialMonth: monthParam,
+    user
   });
 };
 

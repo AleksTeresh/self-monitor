@@ -2,6 +2,7 @@ import { Router } from "../deps.js";
 import {
   authenticate,
   showLoginForm,
+  logout
 } from "./controllers/authController.js";
 import {
   register,
@@ -28,6 +29,7 @@ router.get("/", showLandingPage);
 
 router.get("/auth/login", showLoginForm);
 router.get("/auth/registration", showRegisterForm);
+router.post("/auth/logout", logout)
 router.post("/auth/login", authenticate);
 router.post("/auth/registration", register);
 

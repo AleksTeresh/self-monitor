@@ -74,7 +74,7 @@ PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecret
 
 
 <ul>
-  <li>
+  <li style="list-style: none;">✓
     <p>Application structure</p>
     <ul>
       <li style="list-style: none;">✓
@@ -86,7 +86,7 @@ PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecret
       <li style="list-style: none;">✓
         Configurations in a separate folder (e.g. config)
         <ul>
-          <li>Test configurations separate from production configurations</li>
+          <li style="list-style: none;">✓Test configurations separate from production configurations</li>
           <li style="list-style: none;">✓
             Configurations loaded from environmental variables or e.g. dotenv
             -files
@@ -95,7 +95,7 @@ PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecret
       </li>
     </ul>
   </li>
-  <li>
+  <li style="list-style: none;">✓
     <p>Users</p>
     <ul>
       <li style="list-style: none;">✓
@@ -135,7 +135,7 @@ PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecret
       </li>
     </ul>
   </li>
-  <li>
+  <li style="list-style: none;">✓
     <p>Authentication</p>
     <ul>
       <li style="list-style: none;">✓Application uses session-based authentication</li>
@@ -158,11 +158,11 @@ PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecret
         Authentication functionality is structured into logical parts (e.g.
         authController.js or part of userController.js, ...).
       </li>
-      <li>
+      <li style="list-style: none;">✓
         Application has a logout button that allows the user to logout (logging
         out effectively means clearing the session)
         <ul>
-          <li>Logout functionality is at /auth/logout</li>
+          <li style="list-style: none;">✓Logout functionality is at /auth/logout</li>
         </ul>
       </li>
     </ul>
@@ -191,7 +191,7 @@ PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecret
           <li style="list-style: none;">✓
             Other paths require that the user is authenticated
             <ul>
-              <li>
+              <li style="list-style: none;">✓
                 Non-authenticated users are redirected to the login form at
                 /auth/login
               </li>
@@ -261,18 +261,18 @@ PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecret
             Form contains labels that clarify the purpose of the input fields
             and the accepted values
           </li>
-          <li>
+          <li style="list-style: none;">✓
             Form fields are validated
             <ul>
-              <li>
+              <li style="list-style: none;">✓
                 Sleep duration must be entered, must be a number (can be
                 decimal), and cannot be negative
               </li>
-              <li>
+              <li style="list-style: none;">✓
                 Sleep quality and generic mood must be reported using numbers
                 between 1 and 5 (integers).
               </li>
-              <li>In case of validation errors, form fields are populated</li>
+              <li style="list-style: none;">✓In case of validation errors, form fields are populated</li>
             </ul>
           </li>
         </ul>
@@ -309,19 +309,19 @@ PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecret
             Form contains labels that clarify the purpose of the input fields
             and the accepted values
           </li>
-          <li>
+          <li style="list-style: none;">✓
             Form fields are validated
             <ul>
-              <li>
+              <li style="list-style: none;">✓
                 Time spent on sports and exercise and time spent studying are
                 reported in hours must be entered, must be a number (can be
                 decimal), and cannot be negative
               </li>
-              <li>
+              <li style="list-style: none;">✓
                 Regularity and quality of eating and generic mood must be
                 reported using numbers between 1 and 5 (integers).
               </li>
-              <li>In case of validation errors, form fields are populated</li>
+              <li style="list-style: none;">✓In case of validation errors, form fields are populated</li>
             </ul>
           </li>
         </ul>
@@ -557,7 +557,7 @@ PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecret
         </ul>
       </li>
       <li style="list-style: none;">✓Different pages of the application follow the same style</li>
-      <li>
+      <li style="list-style: none;">✓
         User sees if the user has logged in (e.g. with a message 'Logged in as
         <a
           href="mailto:my@email.net"

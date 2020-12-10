@@ -28,6 +28,7 @@ const showLandingPage = async ({ render, request, response, session }) => {
       moodAverages[todayString] &&
       moodAverages[yesterdayString] &&
       moodAverages[todayString].avgMood - moodAverages[yesterdayString].avgMood,
+    user: await session.get("user")
   });
 };
 

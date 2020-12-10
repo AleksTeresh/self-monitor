@@ -27,7 +27,7 @@ const showReportForm = async ({ render, session }) => {
       !!report.study_duration ||
       !!report.evening_moods);
 
-  render("reporting/index.ejs", { didMorning, didEvening });
+  render("reporting/index.ejs", { didMorning, didEvening, user });
 };
 
 const getMorningReportFormDate = () => {
@@ -41,8 +41,9 @@ const getMorningReportFormDate = () => {
   };
 };
 
-const showReportMorningForm = async ({ render }) => {
-  render("reporting/morningReport.ejs", getMorningReportFormDate());
+const showReportMorningForm = async ({ render, session }) => {
+  const user = await session.get("user");
+  render("reporting/morningReport.ejs", {...getMorningReportFormDate(), user});
 };
 
 const getEveningReportFormDate = () => {
@@ -57,8 +58,9 @@ const getEveningReportFormDate = () => {
   };
 };
 
-const showReportEveningForm = async ({ render }) => {
-  render("reporting/eveningReport.ejs", getEveningReportFormDate());
+const showReportEveningForm = async ({ render, session }) => {
+  const user = await session.get("user");
+  render("reporting/eveningReport.ejs", {...getEveningReportFormDate(), user});
 };
 
 const chooseReportType = async ({ render, request, response }) => {
@@ -86,6 +88,7 @@ const morningValidationRules = {
 const postMorningReport = async ({ render, request, response, session }) => {
   const body = request.body();
   const params = await body.value;
+  const user = await session.get("user");
 
   const sleepDuration =
     params.get("sleepDuration") && Number(params.get("sleepDuration"));
@@ -94,7 +97,7 @@ const postMorningReport = async ({ render, request, response, session }) => {
   const morningMood = params.get("mood") && Number(params.get("mood"));
   const date = params.get("date");
 
-  const data = { sleepDuration, sleepQuality, mood: morningMood, date };
+  const data = { sleepDuration, sleepQuality, mood: morningMood, date, user };
   const [passes, errors] = await validate(data, morningValidationRules);
 
   if (!passes) {
@@ -102,8 +105,6 @@ const postMorningReport = async ({ render, request, response, session }) => {
     render("reporting/morningReport.ejs", data);
     return;
   }
-
-  const user = await session.get("user");
 
   await doReport(user.id, date, { sleepDuration, sleepQuality, morningMood });
 
@@ -123,6 +124,8 @@ const postEveningReport = async ({ render, request, response, session }) => {
   const body = request.body();
   const params = await body.value;
 
+  const user = await session.get("user");
+
   const sportDuration =
     params.get("sportDuration") && Number(params.get("sportDuration"));
   const studyDuration =
@@ -141,6 +144,7 @@ const postEveningReport = async ({ render, request, response, session }) => {
     eatingQuality,
     mood: eveningMood,
     date,
+    user
   };
   const [passes, errors] = await validate(data, eveningValidationRules);
 
@@ -149,8 +153,6 @@ const postEveningReport = async ({ render, request, response, session }) => {
     render("reporting/eveningReport.ejs", data);
     return;
   }
-
-  const user = await session.get("user");
 
   await doReport(user.id, date, {
     sportDuration,

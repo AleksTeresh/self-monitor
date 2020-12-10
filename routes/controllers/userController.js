@@ -7,8 +7,9 @@ const getRegisterData = () => ({
   errors: []
 })
 
-const showRegisterForm = async({render}) => {
-  render('auth/register.ejs', getRegisterData())
+const showRegisterForm = async({rende, session}) => {
+  const user = await session.get("user");
+  render('auth/register.ejs', {...getRegisterData(), user})
 }
 
 const validationRules = {
@@ -24,7 +25,9 @@ const register = async({request, response, session, render}) => {
   const password = params.get('password');
   const verification = params.get('verification');
 
-  const data = { email, password }
+  const user = await session.get("user");
+
+  const data = { email, password, user }
   const [passes, errors] = await validate(data, validationRules);
 
   if (!passes) {

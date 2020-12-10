@@ -1,8 +1,9 @@
 import { authenticate as getUserData } from '../../services/authService.js'
 import { validate, required, lengthBetween, isEmail, minLength } from '../../deps.js'
 
-const showLoginForm = async({render}) => {
-  render('auth/login.ejs', { message: null })
+const showLoginForm = async({render, session}) => {
+  const user = await session.get("user");
+  render('auth/login.ejs', { message: null, user })
 }
 
 const authenticate = async({request, response, session, render}) => {
@@ -15,7 +16,8 @@ const authenticate = async({request, response, session, render}) => {
   const userData = await getUserData(email, password);
 
   if (!userData) {
-    render('auth/login.ejs', { message: 'Invalid email or password' })
+    const user = await session.get("user");
+    render('auth/login.ejs', { message: 'Invalid email or password', user })
     return
   }
 
@@ -24,4 +26,11 @@ const authenticate = async({request, response, session, render}) => {
   response.body = 'Authentication successful!';
 }
 
-export { authenticate, showLoginForm }
+const logout = async({ session, response }) => {
+  await session.set('authenticated', false);
+  await session.set('user', undefined);
+
+  response.redirect('/')
+}
+
+export { authenticate, showLoginForm, logout }
