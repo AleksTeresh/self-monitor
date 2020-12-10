@@ -47,7 +47,8 @@ jobs:
       - name: Run tests
         run: deno test --allow-all --unstable
         env:
-          # The hostname used to communicate with the PostgreSQL service container
-          POSTGRES_HOST: postgres
-          # The default PostgreSQL port
-          POSTGRES_PORT: 5432
+          PGPORT: 5432
+          PGDATABASE: postgres
+          PGUSER: postgres
+          PGHOST: postgres
+          PGPASSWORD: postgres
