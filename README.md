@@ -4,7 +4,23 @@ The app is available at https://self-monitor3000.herokuapp.com/
 
 ## Getting started
 
-Create a database in whatever way is more suitable for you e.g. Docker, ElephantSQL, PostgeSQL running locally on your machine, etc.
+**Create a database in whatever way is more suitable for you** e.g. Docker, ElephantSQL, PostgeSQL running locally on your machine, etc. all will work just fine. Below I'll show steps for setting up a DB with Docker, **but please feel free to use a method of your choice.**
+
+### Setting up PostgreSQL with Docker
+
+If you don't have Docker installed, go ahead and install it first by following https://www.docker.com/get-started
+
+Once you have docker locally, run
+
+```
+docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres
+```
+
+```
+docker exec -it some-postgres psql -U postgres
+```
+
+### Creating tables
 
 Run the following SQL commands to create the required tables and indices.
 
@@ -34,6 +50,8 @@ CREATE TABLE reports (
 CREATE UNIQUE INDEX ON reports(report_day, user_id);
 CREATE INDEX ON reports(report_day);
 ```
+
+### Running the application locally
 
 Once this is done, start the app locally by running the following command from the root directory of the project (**do replace environment variables PGPORT, PGDATABASE, PGUSER, PGHOST, PGPASSWORD with actual values for your database**):
 
@@ -102,7 +120,7 @@ There are **22** tests in total, all of which should pass.
 
 **NOTE**: *The test runner does not automatically exit for some reason, even if all the tests are completed and successful. I think this has something to do with Deno not closing DB's pool when needed. Anyway, feel free to exit the test runner manually (via "Ctrl+C") when all the tests are done and you can see the "total results" statistics i.e. how many tests passed, how many failed, etc.*
 
-## Misc notes
+## Miscellaneous notes
 
 * When displayng weekly and monthly averages for the last month and week on the summary page, I interpret *last* as in "currently ongoing".
 
