@@ -61,9 +61,9 @@ PGPORT=5432 PGDATABASE=postgres PGUSER=postgres PGHOST=localhost PGPASSWORD=myse
 
 ## Setting up test environment
 
-To keep test data separate from the one that's accessible by an app, by following the commands below, you'll create a separate database, connect to it and recreate all the needed tables in there.
+To keep test data separate from the one that's accessible by an actual application, by following the commands below, you'll create a separate database, connect to it and recreate all the needed tables in there.
 
-If for some reason you cannot create/connect to a new database using the command below (e.g. maybe you're missing permissions or something else), feel free to create a new database in whatever way you want (creating it in ElephantSQL or something). The main point is that you have a PostgreSQL database that is different from the one used by your app. Naturally, you'll need to make  sure you know the name, hostname and credentials for the new test database. Ypu'll need them when executing a command for actually running the tests below.
+If for some reason you cannot create/connect to a new database using the command below (e.g. maybe you're missing permissions or something else), feel free to create a new database in whatever way you want (creating it in ElephantSQL or something). The main point is that you have a PostgreSQL database that is different from the one used by your app. Naturally, you'll need to make  sure you know the name, hostname and credentials for the new test database. You'll need them when executing a command for actually running the tests below.
 
 ```sql
 CREATE DATABASE test;
