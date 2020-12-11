@@ -2,22 +2,22 @@
 <h1>Evening report</h1>
 
 <form method="POST">
-  <label>Sport/exercise duration (h.)</label>
+  <label>Time spent on sport/exercise (hours with 2 decimals e.g. 0.66)</label>
   <%- include('../partials/error.ejs', { errors: errors, attribute: 'sportDuration'}) %>
   <input type="number" name="sportDuration" min="0" max="24" step="0.01" value="<%= sportDuration %>" />
-  <label>Studying duration (h.)</label>
+  <label>Time spent on studies (hours with 2 decimals e.g. 7.54)</label>
   <%- include('../partials/error.ejs', { errors: errors, attribute: 'studyDuration'}) %>
   <input type="number" name="studyDuration" min="0" max="24" step="0.01" value="<%= studyDuration %>" />
-  <label>Eating regularity</label>
+  <label>Eating regularity (use the slider to select a value from 1 to 5, where 1 corresponds to very poor and 5 corresponds to excellent)</label>
   <%- include('../partials/error.ejs', { errors: errors, attribute: 'eatingRegularity'}) %>
   <input type="range" name="eatingRegularity" min="1" max="5" value="<%= eatingRegularity || 3 %>" />
-  <label>Eating quality</label>
+  <label>Eating quality (use the slider to select a value from 1 to 5, where 1 corresponds to very poor and 5 corresponds to excellent)</label>
   <%- include('../partials/error.ejs', { errors: errors, attribute: 'eatingQuality'}) %>
   <input type="range" name="eatingQuality" min="1" max="5" value="<%= eatingQuality || 3 %>" />
-  <label>General mood</label>
+  <label>General mood (use the slider to select a value from 1 to 5, where 1 corresponds to very poor and 5 corresponds to excellent)</label>
   <%- include('../partials/error.ejs', { errors: errors, attribute: 'mood'}) %>
   <input type="range" name="mood" min="1" max="5" value="<%= mood || 3 %>" />
-  <label>Date</label>
+  <label>Report values for the following date (format dd.mm.yyyy)</label>
   <%- include('../partials/error.ejs', { errors: errors, attribute: 'date'}) %>
   <input type="date" name="date" value="<%= (date || (new Date()).toISOString().substr(0, 10)) %>" />
   <input type="submit" value="Submit" />
