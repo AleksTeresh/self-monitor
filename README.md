@@ -4,6 +4,8 @@ The app is available at https://self-monitor3000.herokuapp.com/
 
 ## Getting started
 
+Create a database in whatever way is more suitable for you e.g. Docker, ElephantSQL, PostgeSQL running locally on your machine, etc.
+
 Run the following SQL commands to create the required tables and indices.
 
 ```sql
@@ -43,13 +45,17 @@ PGPORT=5432 PGDATABASE=postgres PGUSER=postgres PGHOST=localhost PGPASSWORD=myse
 
 To keep test data separate from the one that's accessible by an app, by following the commands below, you'll create a separate database, connect to it and recreate all the needed tables in there.
 
-Besides, we create one test user as the last command in the listing.
+If for some reason you cannot create/connect to a new database using the command below (e.g. maybe you're missing permissions or something else), feel free to create a new database in whatever way you want (creating it in ElephantSQL or something). The main point is that you have a PostgreSQL database that is different from the one used by your app. Naturally, you'll need to make  sure you know the name, hostname and credentials for the new test database. Ypu'll need them when executing a command for actually running the tests below.
 
 ```sql
 CREATE DATABASE test;
 
 \c test;
+```
 
+Next create the same tables and indices that you created for the app itself
+
+```sql
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   email VARCHAR(320) NOT NULL UNIQUE,
@@ -74,7 +80,11 @@ CREATE TABLE reports (
 
 CREATE UNIQUE INDEX ON reports(report_day, user_id);
 CREATE INDEX ON reports(report_day);
+```
 
+Besides, we create one test user as the last command in the listing.
+
+```sql
 INSERT INTO users (email, password) VALUES ('test@test.test', '$2a$10$JBoghQCCRf9exbhCQspanehOPbwDwTx7MCI8.lKln2NClIJ7j.60m');
 ```
 
@@ -82,9 +92,21 @@ INSERT INTO users (email, password) VALUES ('test@test.test', '$2a$10$JBoghQCCRf
 
 Run the tests locally by running the following command from the root directory of the project (**do replace environment variables PGPORT, PGDATABASE, PGUSER, PGHOST, PGPASSWORD with actual values for your test database**):
 
+**NOTE**: *when running the tests, make sure you do not have the application running locally at the same time. Otherwise Deno will complain that the required port is already in use.*
 
 ```
 PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecretpassword deno test --coverage --allow-all --unstable
 ```
 
 There are **22** tests in total, all of which should pass.
+
+**NOTE**: *The test runner does not automatically exit for some reason, even if all the tests are completed and successful. I think this has something to do with Deno not closing DB's pool when needed. Anyway, feel free to exit the test runner manually (via "Ctrl+C") when all the tests are done and you can see the "total results" statistics i.e. how many tests passed, how many failed, etc.*
+
+## Misc notes
+
+* When displayng weekly and monthly averages for the last month and week on the summary page, I interpret *last* as in "currently ongoing".
+
+* When accessing /api/summary, if no data for the last 7 days is available, 404 status code is returned
+
+* When accessing /api/summary/:year/:month/:day, if no data for the specified date is available, 404 status code is returned
+

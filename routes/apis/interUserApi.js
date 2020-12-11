@@ -5,6 +5,7 @@ const getAverages = async({request, response}) => {
   const today = new Date()
   const weekAgo = new Date(new Date().getTime() - 7 * 24 * 3600 * 1000)
   const averages = await getAveragesFromDB(weekAgo.toDateString(), today.toDateString()) 
+  console.log(averages)
   response.body = averages;
 };
 

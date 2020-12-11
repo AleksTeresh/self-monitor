@@ -27,7 +27,7 @@ const getAverages = async (from, to) => {
     AVG(sport_duration) as avg_sport_duration,
     AVG(study_duration) as avg_study_duration,
     AVG(eating_regularity) as avg_eating_regularity,
-    AVG(eating_quality) as avg_quality,
+    AVG(eating_quality) as avg_eating_quality,
     cast(COALESCE(SUM(morning_mood), 0) + COALESCE(SUM(evening_mood), 0) as decimal) / (COUNT(morning_mood) + COUNT(evening_mood)) as avg_mood
     FROM reports WHERE report_day >= $1 AND report_day <= $2
     GROUP BY report_day ORDER BY report_day ASC;`,
