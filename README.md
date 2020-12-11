@@ -24,8 +24,11 @@ CREATE TABLE reports (
   eating_quality smallint CHECK (eating_quality >= 0 AND eating_quality <= 5),
   morning_mood smallint CHECK (morning_mood >= 0 AND morning_mood <= 5),
   evening_mood smallint CHECK (evening_mood >= 0 AND evening_mood <= 5),
-  user_id INTEGER REFERENCES users(id)
+  user_id INTEGER NOT NULL REFERENCES users(id)
 );
+
+CREATE UNIQUE INDEX ON reports(report_day, user_id);
+CREATE INDEX ON reports(report_day);
 ```
 
 ```sql
@@ -52,8 +55,11 @@ CREATE TABLE reports (
   eating_quality smallint CHECK (eating_quality >= 0 AND eating_quality <= 5),
   morning_mood smallint CHECK (morning_mood >= 0 AND morning_mood <= 5),
   evening_mood smallint CHECK (evening_mood >= 0 AND evening_mood <= 5),
-  user_id INTEGER REFERENCES users(id)
+  user_id INTEGER NOT NULL REFERENCES users(id)
 );
+
+CREATE UNIQUE INDEX ON reports(report_day, user_id);
+CREATE INDEX ON reports(report_day);
 
 INSERT INTO users (email, password) VALUES ('test@test.test', '$2a$10$JBoghQCCRf9exbhCQspanehOPbwDwTx7MCI8.lKln2NClIJ7j.60m');
 ```
@@ -167,7 +173,7 @@ PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecret
       </li>
     </ul>
   </li>
-  <li>
+  <li style="list-style: none;">✓
     <p>Middleware</p>
     <ul>
       <li style="list-style: none;">✓
@@ -211,7 +217,7 @@ PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecret
       </li>
     </ul>
   </li>
-  <li>
+  <li style="list-style: none;">✓
     <p>Reporting</p>
     <ul>
       <li style="list-style: none;">✓
@@ -305,7 +311,7 @@ PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecret
               </li>
             </ul>
           </li>
-          <li>
+          <li style="list-style: none;">✓
             Form contains labels that clarify the purpose of the input fields
             and the accepted values
           </li>
@@ -334,11 +340,11 @@ PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecret
             Reporting is user-specific (all reported values are stored under the
             currently authenticated user)
           </li>
-          <li>
+          <li style="list-style: none;">✓
             If the same report is already given (e.g. morning report for a
             specific day), then the older report is removed
             <ul>
-              <li>
+              <li style="list-style: none;">✓
                 If the functionality for handling duplicate reports is something
                 else, the functionality is described in documentation
               </li>
@@ -424,10 +430,10 @@ PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecret
       <li style="list-style: none;">✓Summarization page contains statistics only for the current user.</li>
     </ul>
   </li>
-  <li>
+  <li style="list-style: none;">✓
     <p>Landing page (i.e. page at the root path of the application)</p>
     <ul>
-      <li>Landing page briefly describes the purpose of the application</li>
+      <li style="list-style: none;">✓Landing page briefly describes the purpose of the application</li>
       <li style="list-style: none;">✓
         Landing page shows a glimpse at the data and indicates a trend
         <ul>
@@ -475,37 +481,37 @@ PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecret
       </li>
     </ul>
   </li>
-  <li>
+  <li style="list-style: none;">✓
     <p>Security</p>
     <ul>
       <li style="list-style: none;">✓Passwords are not stored in plaintext</li>
-      <li>
+      <li style="list-style: none;">✓
         Field types in the database match the actual content (i.e., when storing
         numbers, use numeric types)
       </li>
-      <li>
+      <li style="list-style: none;">✓
         Database queries done using parameterized queries (i.e., code cannot be
         injected to SQL queries)
       </li>
-      <li>
+      <li style="list-style: none;">✓
         Data retrieved from the database are sanitized (i.e., if showing content
         from database, using
         <code class="language-text">&lt;%= ... %&gt;</code> instead of
         <code class="language-text">&lt;%- ...%&gt;</code> unless explicitly
         stated what for).
       </li>
-      <li>Users cannot access data of other users.</li>
-      <li>Users cannot post reports to other users' accounts.</li>
+      <li style="list-style: none;">✓Users cannot access data of other users.</li>
+      <li style="list-style: none;">✓Users cannot post reports to other users' accounts.</li>
     </ul>
   </li>
-  <li>
+  <li style="list-style: none;">✓
     <p>Database</p>
     <ul>
       <li style="list-style: none;">✓
         Expensive calculations such as calculating averages are done in the
         database
       </li>
-      <li>
+      <li style="list-style: none;">✓
         Indices are used when joining tables if the queries are such that they
         are used often
       </li>
@@ -568,7 +574,7 @@ PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecret
       </li>
     </ul>
   </li>
-  <li>
+  <li style="list-style: none;">✓
     <p>APIs</p>
     <ul>
       <li style="list-style: none;">✓
@@ -619,5 +625,5 @@ PGPORT=5432 PGDATABASE=test PGUSER=postgres PGHOST=localhost PGPASSWORD=mysecret
       <li>Documentation contains guidelines for running tests</li>
     </ul>
   </li>
-  <li>Resolve time zone business</li>
+  <li style="list-style: none;">✓Resolve time zone business</li>
 </ul>

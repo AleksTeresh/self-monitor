@@ -8,7 +8,7 @@ const getRegisterData = () => ({
   errors: []
 })
 
-const showRegisterForm = async({rende, session}) => {
+const showRegisterForm = async({render, session}) => {
   const user = await session.get("user");
   render('auth/register.ejs', {...getRegisterData(), user})
 }

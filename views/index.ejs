@@ -1,7 +1,7 @@
 <%- include('./partials/header.ejs') %>
-<h1>Self Monitor!</h1>
+<h1>Self Monitor</h1>
 
-<p>Report your behaviors and follow your trends</p>
+<p>The application provides users an opportunity to report their behavior daily. Keep track of your mood, study time, exercise routines and more. Summary page will provide useful information about your behavior over the span of a week or a month.</p>
 
 <% if (moodAverages && moodAverages[todayString]) { %>
   <p>Average mood today: <%= moodAverages[todayString].avgMood %></p>

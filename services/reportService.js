@@ -28,7 +28,6 @@ const doReport = async(userId, date, reportData) => {
                                              );
   } else {
     const combinedValues = { ...keysToCamel(res), ...reportData }
-    console.log(combinedValues)
     await executeQuery(`UPDATE reports SET
       sleep_duration = $2,
       sleep_quality = $3,
