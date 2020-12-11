@@ -11,9 +11,14 @@
     <div class="container">
       <% if (user) { %>
         <nav>
+          <div style="margin-bottom: 20px; margin-right: 20px; display: inline; "><a href="/">Home</a></div>
           <div style="margin-bottom: 20px; margin-right: 20px; display: inline; ">Logged in as <%= user.email %></div>
           <form method="POST" action="/auth/logout" style="display: inline;">
             <input type="submit" value="Log out" />
           </form>
+        </nav>
+      <% } else { %>
+        <nav>
+          <div style="margin-bottom: 20px; margin-right: 20px; display: inline; "><a href="/">Home</a></div>
         </nav>
       <% } %>
