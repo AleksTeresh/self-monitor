@@ -48,7 +48,6 @@ CREATE TABLE reports (
 );
 
 CREATE UNIQUE INDEX ON reports(report_day, user_id);
-CREATE INDEX ON reports(report_day);
 ```
 
 ### Running the application locally
